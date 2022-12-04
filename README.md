@@ -8,16 +8,11 @@
   7. Read / write to a specific address (include offset)
 
 
+```unsigned XIic_Send	(	UINTPTR 	BaseAddress, u8 	Address, u8 * 	BufferPtr, unsigned 	ByteCount, u8 	Option )```
+
+```unsigned XIic_Recv	(	UINTPTR 	BaseAddress, u8 	Address, u8 * 	BufferPtr, unsigned 	ByteCount, u8 	Option )```	
 
 
-**Reference:**
-
-SPI:
-https://xilinx.github.io/embeddedsw.github.io/spi/doc/html/api/index.html
-
-
-IIC: 
-https://xilinx.github.io/embeddedsw.github.io/iic/doc/html/api/index.html
 
 ```define XSpi_ReadReg	(	BaseAddress,RegOffset)		   XSpi_In32((BaseAddress) + (RegOffset))```
 #Read from the specified Spi device register.
@@ -43,4 +38,13 @@ https://xilinx.github.io/embeddedsw.github.io/iic/doc/html/api/index.html
 **RegisterValue:** the value to be written to the register.
 
 
+
+**Reference:**
+
+SPI:
+https://xilinx.github.io/embeddedsw.github.io/spi/doc/html/api/index.html
+
+
+IIC: 
+https://xilinx.github.io/embeddedsw.github.io/iic/doc/html/api/index.html
 
