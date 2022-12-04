@@ -1,4 +1,4 @@
-Steps:
+**Steps:**
   1. Add Xilinx IP to bd
   2. Define register map
   3. Generate bitstream 
@@ -8,7 +8,7 @@ Steps:
   7. Read / write to a specific address (include offset)
 
 
-Reference: 
+**Reference: **
 SPI:
 https://xilinx.github.io/embeddedsw.github.io/spi/doc/html/api/index.html
 
@@ -17,9 +17,9 @@ IIC:
 https://xilinx.github.io/embeddedsw.github.io/iic/doc/html/api/index.html
 
 
-BaseAddress:	contains the base address of the device.
-RegOffset:	contains the offset from the 1st register of the device to select the specific register.
-RegisterValue:	is the value to be written to the register.
+**BaseAddress:**	contains the base address of the device.
+**RegOffset:**	contains the offset from the 1st register of the device to select the specific register.
+**RegisterValue:** the value to be written to the register.
 
 
 
