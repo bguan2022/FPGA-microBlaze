@@ -17,6 +17,8 @@ The driver looks up its own configuration structure created by the tool-chain ba
 
 
 ## SPI
+ It is the driver for an SPI master or slave device. It supports 8-bit, 16-bit and 32-bit wide data transfers.
+
 
 ```define XSpi_ReadReg	(	BaseAddress,RegOffset)		   XSpi_In32((BaseAddress) + (RegOffset))```
 #Read from the specified Spi device register.
