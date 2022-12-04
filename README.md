@@ -12,6 +12,8 @@
 ```unsigned XIic_Send	(	UINTPTR 	BaseAddress, u8 	Address, u8 * 	BufferPtr, unsigned 	ByteCount, u8 	Option )```
 
 ```unsigned XIic_Recv	(	UINTPTR 	BaseAddress, u8 	Address, u8 * 	BufferPtr, unsigned 	ByteCount, u8 	Option )```	
+```XSpi_Initialize(InstancePtr, DeviceId) ``` 
+The driver looks up its own configuration structure created by the tool-chain based on an ID provided by the tool-chain.
 
 
 ## SPI
