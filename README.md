@@ -1,4 +1,4 @@
-**Steps:**
+## Steps:
   1. Add Xilinx IP to bd
   2. Define register map
   3. Generate bitstream 
