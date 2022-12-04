@@ -1,8 +1,6 @@
 
-#define XSpi_ReadReg	(	 	BaseAddress,
- 	RegOffset 
-)		   XSpi_In32((BaseAddress) + (RegOffset))
-Read from the specified Spi device register.
+define XSpi_ReadReg	(	BaseAddress,RegOffset)		   XSpi_In32((BaseAddress) + (RegOffset))
+#Read from the specified Spi device register.
 
 #Parameters
 #BaseAddress	contains the base address of the device.
@@ -10,10 +8,7 @@ Read from the specified Spi device register.
 
 #Returns: The value read from the register.
 
-#define XSpi_WriteReg	(	 	BaseAddress,
- 	RegOffset,
- 	RegisterValue 
-)		   XSpi_Out32((BaseAddress) + (RegOffset), (RegisterValue))
+define XSpi_WriteReg	(	 	BaseAddress,RegOffset,RegisterValue )		   XSpi_Out32((BaseAddress) + (RegOffset), (RegisterValue))
 #Write to the specified Spi device register.
 
 #Parameters
