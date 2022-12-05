@@ -9,8 +9,14 @@
   7. Initilize the driver (IIC / SPI)
   8. Read / write to a specific address (include offset)
 
-## IIC
+## Xilinx IP
+SPI mode: standalone / dual / quad 
 
+SPI: https://docs.xilinx.com/r/en-US/pg153-axi-quad-spi/Dual/Quad-SPI-Mode
+
+![image](https://user-images.githubusercontent.com/42010432/205732836-8a5c5b40-5160-4124-ae43-36b2feeb923d.png)
+
+## IIC Driver
 7-bit slave addressing 
 
 The XIic_Start() function must be called after this function before the device is ready to send and receive data on the IIC bus.
@@ -29,7 +35,7 @@ returns number of bytes received
 The driver looks up its own configuration structure created by the tool-chain based on an ID provided by the tool-chain.
 
 
-## SPI
+## SPI Driver 
  It is the driver for an SPI master or slave device. It supports 8-bit, 16-bit and 32-bit wide data transfers.
 
 
