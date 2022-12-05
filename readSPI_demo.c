@@ -20,13 +20,25 @@ int main(){
   init_platform();
   print("Starting Microblaze Test program \n\r");
   counter = 0;
-  XSpi * 	InstancePtr;
-  u16 	DeviceId;
+  XSpi * 	Spi;
+
   DeviceID = ; 
   int stat; 
   
-  stat = XSpi_Initialize(InstancePtr, DeviceId)		
+  	/*
+	 * Initialize the SPI driver so that it's ready to use,
+	 * specify the device ID that is generated in xparameters.h.
+	 */
+  stat = XSpi_Initialize(&spi, SPI_DEVICE_ID)		
   check_spi_status(stat); 
+  
+  stat = SetupInterruptSystem(&Spi);
+	if(Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+  
+	/* Start the SPI driver so that interrupts and the device are enabled. */
+	XSpi_Start(&Spi);
   
   while (1){
     readSPIReg(spi_addr,offset_addr,*readData);
@@ -34,8 +46,9 @@ int main(){
     sleep(1000); 			//pause 1 sec
     if (counter > 100) 			//collect 100 samples 
         break;
-  }
+  };
   
+   XSpi_stop(&Spi);
    cleanup_platform();
    return 0;
 }; 
