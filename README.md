@@ -33,9 +33,9 @@ The driver looks up its own configuration structure created by the tool-chain ba
 
 #Read from the specified Spi device register.
 
-#Parameters
-  BaseAddress	contains the base address of the device.
-  RegOffset	contains the offset from the 1st register of the device to select the specific register.
+**Parameters**
+  **BaseAddress**	contains the base address of the device.
+  **RegOffset**	contains the offset from the 1st register of the device to select the specific register.
 
 #Returns: The value read from the register.
 
