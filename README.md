@@ -5,7 +5,8 @@
   4. Export hardware to Vitis
   5. Create workspace and include Xilinx driver (.c .h)
   6. Initilize the driver (IIC / SPI)
-  7. Read / write to a specific address (include offset)
+  7. set up UART terminal with specific baud rate 
+  8. Read / write to a specific address (include offset)
 
 ## IIC
 
