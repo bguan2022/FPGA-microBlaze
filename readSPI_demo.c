@@ -15,12 +15,12 @@
 
 int main(){
   u32 spi_addr,offset_addr,*readData, counter;
-  sou_addr = 0x44000000;
+  spi_addr = 0x44000000;
   offset_addr = 0;
   init_platform();
   print("Starting Microblaze Test program \n\r");
   counter = 0;
-  XSpi * 	InstancePt;
+  XSpi * 	InstancePtr;
   u16 	DeviceId;
   DeviceID = ; 
   int stat; 
