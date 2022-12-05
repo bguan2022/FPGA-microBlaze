@@ -17,12 +17,15 @@ The XIic_Start() function must be called after this function before the device i
 
 
 ```unsigned XIic_Send	(	UINTPTR 	BaseAddress, u8 	Address, u8 * 	BufferPtr, unsigned 	ByteCount, u8 	Option )```
+
 returns number of bytes sent. Only support 7-bit addressing, returns zero if bus is busy  
 
 ```unsigned XIic_Recv	(	UINTPTR 	BaseAddress, u8 	Address, u8 * 	BufferPtr, unsigned 	ByteCount, u8 	Option )```	
+
 returns number of bytes received 
 
 ```XSpi_Initialize(InstancePtr, DeviceId) ``` 
+
 The driver looks up its own configuration structure created by the tool-chain based on an ID provided by the tool-chain.
 
 
@@ -34,14 +37,7 @@ The driver looks up its own configuration structure created by the tool-chain ba
 
 #Read from the specified Spi device register.
 
-**Parameters**
-  **BaseAddress**	contains the base address of the device.
-  
-  **RegOffset**	contains the offset from the 1st register of the device to select the specific register.
-  
-  **Returns:** The value read from the register.
-
-```define XSpi_WriteReg	(	 	BaseAddress,RegOffset,RegisterValue )		   XSpi_Out32((BaseAddress) + (RegOffset), (RegisterValue))```
+```define XSpi_WriteReg	(	 	BaseAddress,RegOffset,RegisterValue )		XSpi_Out32((BaseAddress) + (RegOffset), (RegisterValue))```
 
 #Write to the specified Spi device register.
 
