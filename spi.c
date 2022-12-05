@@ -17,7 +17,7 @@ int readSPIReg(u32 SPI_ADDR, u32 offset, u32 *readData) {
 }
 
 int writeSPIReg(u32 SPI_ADDR, u32 offset, u32 writeData) {
-	XSpi_WriteReg(SPI_ADDR, spi_addr, WriteData, addrSize + SPI_DEV_ADDR_PLUS_BYTE, XSPI_STOP);
+	XSpi_WriteReg(SPI_ADDR, offset, writeData, addrSize);
 	printf("Writing %d to SPI reg at %d", writeData, SPI_ADDR+offset);
 	return 0;
 }
