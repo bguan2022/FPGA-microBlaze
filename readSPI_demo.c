@@ -14,7 +14,7 @@
 
 
 int main(){
-  u32 spi_addr,offset_addr,*readDat;
+  u32 spi_addr,offset_addr,*readData;
   sou_addr = 0x44000000;
   offset_addr = 0;
   
