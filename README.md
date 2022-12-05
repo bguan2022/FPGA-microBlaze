@@ -9,9 +9,17 @@
 
 ## IIC
 
+7-bit slave addressing 
+
+The XIic_Start() function must be called after this function before the device is ready to send and receive data on the IIC bus.
+
+
 ```unsigned XIic_Send	(	UINTPTR 	BaseAddress, u8 	Address, u8 * 	BufferPtr, unsigned 	ByteCount, u8 	Option )```
+returns number of bytes sent. Only support 7-bit addressing, returns zero if bus is busy  
 
 ```unsigned XIic_Recv	(	UINTPTR 	BaseAddress, u8 	Address, u8 * 	BufferPtr, unsigned 	ByteCount, u8 	Option )```	
+returns number of bytes received 
+
 ```XSpi_Initialize(InstancePtr, DeviceId) ``` 
 The driver looks up its own configuration structure created by the tool-chain based on an ID provided by the tool-chain.
 
