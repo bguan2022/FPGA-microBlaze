@@ -176,7 +176,12 @@ int main()
               printf("\t%02X: %08X\r\n",(i*4), Xil_In32(LED_MATRIX_REG_BASE + (i*4)));
             }
             break;
-
+	
+	case readSPI:
+		arg1 = strtok(NULL,delimit);
+		read_SPIReg(spi_addr, offset_addr,*readData);
+	break;
+					
         case writeledreg: // write register - format 'w address data',  (offset from the base reg)
             arg1 = strtok(NULL, delimit);
             arg2 = strtok(NULL, delimit);
