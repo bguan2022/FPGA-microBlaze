@@ -35,9 +35,10 @@ The driver looks up its own configuration structure created by the tool-chain ba
 
 **Parameters**
   **BaseAddress**	contains the base address of the device.
+  
   **RegOffset**	contains the offset from the 1st register of the device to select the specific register.
-
-#Returns: The value read from the register.
+  
+  **Returns:** The value read from the register.
 
 ```define XSpi_WriteReg	(	 	BaseAddress,RegOffset,RegisterValue )		   XSpi_Out32((BaseAddress) + (RegOffset), (RegisterValue))```
 
@@ -51,7 +52,9 @@ The driver looks up its own configuration structure created by the tool-chain ba
 #Returns: None.
 
 **BaseAddress:**	contains the base address of the device.
+
 **RegOffset:**	contains the offset from the 1st register of the device to select the specific register.
+
 **RegisterValue:** the value to be written to the register.
 
 
