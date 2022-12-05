@@ -61,6 +61,7 @@ int main()
 	u8 	addr8, size;
 	u16 addr;
 	u32 addr32, data32;
+	u32 *readData;
 	u8 data8[IIC_WRITE_LEN_MAX], regData[16];
 	int i;
 
