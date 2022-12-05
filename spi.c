@@ -14,8 +14,10 @@ int check_spi_status(stat){
       		printf ("SPI initialization is successful.");
 	else if (stat == XST_DEVICE_IS_STARTED)
 	     	printf ("if the device is started. It must be stopped to re-initialize.");
+		printf ("/n SPI initlization failed");
 	else if  (stat == XST_DEVICE_NOT_FOUND ) 
 	      	printf ("if the device was not found in the configuration such that initialization could not be accomplished."); 
+		printf ("SPI initlization failed");
 };
 
 int readSPIReg(u32 SPI_ADDR, u32 offset, u32 *readData) {
