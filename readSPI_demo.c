@@ -25,8 +25,8 @@ int main(){
   DeviceID = ; 
   int stat; 
   
-  stat = XSpi_Initialize	(InstancePtr, DeviceId)		
-  check_spi_init_status(stat); 
+  stat = XSpi_Initialize(InstancePtr, DeviceId)		
+  check_spi_status(stat); 
   
   while (1){
     readSPIReg(spi_addr,offset_addr,*readData);
