@@ -20,9 +20,8 @@ int main(){
   init_platform();
   print("Starting Microblaze Test program \n\r");
   counter = 0;
-  XSpi * 	Spi;
+  XSpi * Spi;
 
-  DeviceID = ; 
   int stat; 
   
   	/*
