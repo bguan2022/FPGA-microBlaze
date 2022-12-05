@@ -10,7 +10,8 @@
   8. Read / write to a specific address (include offset)
 
 ## Xilinx IP
-SPI mode: standalone / dual / quad 
+- SPI mode: standalone / dual / quad 
+- For xip and standard modes, ext_spi_clk may be limited to 60 MHz.
 
 SPI: https://docs.xilinx.com/r/en-US/pg153-axi-quad-spi/Dual/Quad-SPI-Mode
 
