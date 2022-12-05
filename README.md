@@ -1,3 +1,4 @@
+# Micro-blaze Set-up
 ## Steps:
   1. Add Xilinx IP to bd
   2. Define register map
