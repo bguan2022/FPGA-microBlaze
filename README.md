@@ -21,6 +21,7 @@ The driver looks up its own configuration structure created by the tool-chain ba
 
 
 ```define XSpi_ReadReg	(	BaseAddress,RegOffset)		   XSpi_In32((BaseAddress) + (RegOffset))```
+
 #Read from the specified Spi device register.
 
 #Parameters
@@ -30,6 +31,7 @@ The driver looks up its own configuration structure created by the tool-chain ba
 #Returns: The value read from the register.
 
 ```define XSpi_WriteReg	(	 	BaseAddress,RegOffset,RegisterValue )		   XSpi_Out32((BaseAddress) + (RegOffset), (RegisterValue))```
+
 #Write to the specified Spi device register.
 
 #Parameters
