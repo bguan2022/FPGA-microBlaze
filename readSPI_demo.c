@@ -20,6 +20,13 @@ int main(){
   init_platform();
   print("Starting Microblaze Test program \n\r");
   counter = 0;
+  XSpi * 	InstancePt;
+  u16 	DeviceId;
+  DeviceID = ; 
+  int stat; 
+  
+  stat = XSpi_Initialize	(InstancePtr, DeviceId)		
+  check_spi_init_status(stat); 
   
   while (1){
     readSPIReg(spi_addr,offset_addr,*readData);
