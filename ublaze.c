@@ -236,4 +236,4 @@ int printmenu(){
 	printf("      03: Increment LED rows once per vsync; LED columns increment from cfg_manual_col_val\r\n");
 	printf("      04: Increment LED rows once per vsync; LED columns increment vsync_interval / 16\r\n");
         return 0;
-}
+};
