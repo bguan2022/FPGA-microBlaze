@@ -1,7 +1,7 @@
 # Micro-blaze Driver Set-up
 ## Steps:
-  1. Add Xilinx IP to bd
-  2. Define register map
+  1. Add Xilinx IP (AXI_IIC / AXI_QSPI) to bd
+  2. Define register map 
   3. Generate bitstream 
   4. Export hardware to Vitis
   5. Create workspace and include Xilinx driver (.c .h)
