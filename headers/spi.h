@@ -6,9 +6,7 @@
 #define SPI_WRITE_LEN_MAX 128
 
 
-int readSPIReg(u8 i2c_addr, u16 regAddr, u8 addrSize, u8 readSize, u8 *ReadData);
-int writeSPIReg(u8 i2c_addr, u16 regAddr, u8 addrSize, u8 writeData);
-int writeSPIRegMultiple(u8 i2c_addr, u16 regAddr, u8 addrSize, u8* writeData, u8 writeLen);
-int readSPIReg32(u8 i2c_addr, u32 regAddr, u32 *ReadData);
+int readSPIReg(u32 spi_addr, u32 offset, u32 *ReadData);
+int writeSPIReg(u8 spi_addr, u32 offset, u32 writeData);
 
 #endif
