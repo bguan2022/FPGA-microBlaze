@@ -11,7 +11,7 @@
 
 
 int readSPIReg(u32 SPI_ADDR, u32 offset, u32 *readData) {
-	inBuffer=XSpi_ReadReg(SPI_ADDR, spi_addr);
+	*readData=XSpi_ReadReg(SPI_ADDR, spi_addr);
 	printf("Read %d SPI reg at %d, value is", writeData, SPI_ADDR+offset, *readData);
 	return inBuffer;
 }
