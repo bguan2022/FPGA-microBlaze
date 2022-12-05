@@ -24,8 +24,8 @@ int main(){
   while (1){
     readSPIReg(spi_addr,offset_addr,*readData);
     counter++;
-    sleep(1000); //pause 1 sec
-    if (counter > 100) 
+    sleep(1000); 			//pause 1 sec
+    if (counter > 100) 			//collect 100 samples 
         break;
   }
   
