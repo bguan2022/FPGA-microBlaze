@@ -18,34 +18,34 @@ input logic miso,
   logic [4:0]  counter; 
   
   always_comb begin 
-    
-    
+    case(state)    
+      IDLE: begin
+            data_valid = 1'b0;
+            if (!miso) begin 
+                next_state  = DATA_IN; 
+            end 
+          end
+      
+      DATA_IN:
+          data_valid = 1'b0;
+          if (counter >= 24) begin
+              next_state    = IDLE;
+            end
+    endcase 
   end 
       
   always @(posedge sck or negedge rst_n) begin
     if (!rst_n) begin
       state              <= IDLE; 
-      data_valid         <= 1'b0;
       encoder_val_full   <= 'x;
     end else begin 
       state             <= next_state; 
-      data_valid        <= 1'b0;
       case (state):
-        IDLE: begin 
-          if (!miso) begin 
-              next_state  <= DATA_IN; 
-          end 
-        end 
-        
+        IDLE: 
+            counter     <= '0;
         DATA_IN: begin 
           din         <= {din[22:0],miso}; //shift register 
-          if (counter >= 24) begin
-            encoder_value_val   <= din;
-            next_state          <= IDLE;
-            counter             <= '0;
-            data_valid          <= 1'b1;
-          end else begin 
-            counter             <= counter +1'b1;
+          counter     <= counter +1'b1;
           end
         end 
       endcase
