@@ -28,7 +28,7 @@ output logic cs;
 
   
 
-  enum {IDLE, DATA_IN} state, next_state; 
+  enum {IDLE, CS, DATA_IN} state, next_state; 
   
   output logic [23:0] encoder_val_full;
   output logic [18:0] encoder_val;
