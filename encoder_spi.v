@@ -1,17 +1,28 @@
+//Max clock 5MHz, ideally  0.5MHz 
+
+//SPI: PIN 1  VDD 
+//PIN 2: SCK
+//PIN 3: DATA 
+//PIN 4: CS (active low)
+//PIN 5: NC
+//PIN 6: GND
+
+// tie cs to a push button on vcu 118
 
 module encoder_reading(
   sck,
   rst_n,
+  cs,
   miso,
   encoder_val,
   enconder_val_full,
   data_valid
 );
   
-  
+input logic sck;
 input logic miso;
-input logic   rst_n,
-input logic  miso,
+input logic rst_n;
+input logic cs;
 
   
 
@@ -26,7 +37,7 @@ input logic  miso,
     case(state)    
       IDLE: begin
             data_valid = 1'b0;
-            if (!miso) begin 
+          if (!cs) begin 
                 next_state  = DATA_IN; 
             end 
           end
