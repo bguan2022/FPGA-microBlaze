@@ -12,17 +12,19 @@
 module encoder_reading(
   sck,
   rst_n,
+  enable,
   cs,
   miso,
   encoder_val,
   enconder_val_full,
   data_valid
 );
-  
+
+input logic enable,
 input logic sck;
 input logic miso;
 input logic rst_n;
-input logic cs;
+output logic cs;
 
   
 
@@ -36,13 +38,19 @@ input logic cs;
   always_comb begin 
     case(state)    
       IDLE: begin
-            data_valid = 1'b0;
-          if (!cs) begin 
-                next_state  = DATA_IN; 
+          cs         = 1'b1;
+          data_valid = 1'b0;
+          if (enable) begin 
+                next_state  = CS; 
             end 
           end
       
+      CS: 
+          cs          = 1'b0;
+          next_state  = DATA_IN;
+      
       DATA_IN:
+          cs         = 1'b0;
           data_valid = 1'b0;
           if (counter >= 24) begin
               next_state    = IDLE;
