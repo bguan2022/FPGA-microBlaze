@@ -17,7 +17,10 @@ input logic miso,
   logic [18:0] encoder_val;
   logic [4:0]  counter; 
   
-
+  always_comb begin 
+    
+    
+  end 
       
   always @(posedge sck or negedge rst_n) begin
     if (!rst_n) begin
@@ -28,12 +31,13 @@ input logic miso,
       state             <= next_state; 
       data_valid        <= 1'b0;
       case (state):
-        IDLE:
-        if (!miso) begin 
-            next_state  <= DATA_IN; 
+        IDLE: begin 
+          if (!miso) begin 
+              next_state  <= DATA_IN; 
+          end 
         end 
         
-        DATA_IN:
+        DATA_IN: begin 
           din         <= {din[22:0],miso}; //shift register 
           if (counter >= 24) begin
             encoder_value_val   <= din;
@@ -41,11 +45,13 @@ input logic miso,
             counter             <= '0;
             data_valid          <= 1'b1;
           end else begin 
-            counter             <= counter +1 ;
-            
-          end   
-      end 
+            counter             <= counter +1'b1;
+          end
+        end 
+      endcase
+     end 
   end 
   
-        assign encoder_val = encoder_val_full[21:3]; //19-bit of data     
+   assign encoder_val = encoder_val_full[21:3]; //19-bit of data     
+  
 end module; 
