@@ -22,6 +22,7 @@ input logic miso,
   always @(posedge sck or negedge rst_n) begin
     if (!rst_n) begin
       state              <= IDLE; 
+      data_valid         <= 1'b0;
       encoder_val_full   <= 'x;
     end else begin 
       state             <= next_state; 
