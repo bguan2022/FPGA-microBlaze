@@ -1,8 +1,8 @@
 //Max clock 5MHz, ideally  0.5MHz 
 
 //SPI: PIN 1  VDD 
-//PIN 2: SCK
-//PIN 3: DATA 
+//PIN 2: SCK (G21)
+//PIN 3: SDI  (G22)
 //PIN 4: CS (active low)
 //PIN 5: NC
 //PIN 6: GND
