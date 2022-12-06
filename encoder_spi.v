@@ -4,6 +4,7 @@ module encoder_reading(
   rst_n,
   miso,
   encoder_val,
+  enconder_val_full,
   data_valid
 );
   
@@ -12,22 +13,23 @@ input logic miso,
 
   enum {IDLE, DATA_IN} state, next_state; 
   
-  logic [23:0] din;
-  logic [5:0]  counter; 
+  logic [23:0] encoder_val_full;
+  logic [18:0] encoder_val;
+  logic [4:0]  counter; 
   
 
       
   always @(posedge sck or negedge rst_n) begin
     if (!rst_n) begin
-      state <= IDLE; 
-      din   <= 'x;
+      state              <= IDLE; 
+      encoder_val_full   <= 'x;
     end else begin 
-      state <= next_state; 
-      data_valid <= 1'b0;
+      state             <= next_state; 
+      data_valid        <= 1'b0;
       case (state):
         IDLE:
         if (!miso) begin 
-            next_state <= DATA_IN; 
+            next_state  <= DATA_IN; 
         end 
         
         DATA_IN:
