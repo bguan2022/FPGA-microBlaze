@@ -9,12 +9,17 @@ module encoder_reading(
 );
   
   
-input logic miso,
+input logic miso;
+input logic   rst_n,
+input logic  miso,
+
+  
 
   enum {IDLE, DATA_IN} state, next_state; 
   
-  logic [23:0] encoder_val_full;
-  logic [18:0] encoder_val;
+  output logic [23:0] encoder_val_full;
+  output logic [18:0] encoder_val;
+  output logic        data_valid;
   logic [4:0]  counter; 
   
   always_comb begin 
