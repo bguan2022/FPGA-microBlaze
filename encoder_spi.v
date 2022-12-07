@@ -1,3 +1,28 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 12/07/2022 02:29:15 PM
+// Design Name: 
+// Module Name: encoder_reading
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+`timescale 1ns / 1ps
+
+
+
+
 //Max clock 5MHz, ideally  0.5MHz 
 
 //SPI: PIN 1  VDD 
@@ -21,7 +46,7 @@ module encoder_reading(
   data_valid
 );
 
-  input logic enable,
+  input logic enable;
   input logic clk;
   input logic miso;
   input logic rst_n;
@@ -38,7 +63,7 @@ module encoder_reading(
   assign sclk = clk_counter[9] ;
     
   always @(posedge clk or negedge rst_n) begin 
-    if (!rst_n)
+    if (!rst_n) begin 
         clk_counter <= '0;
     end else begin 
         clk_counter <= clk_counter + 1'b1;
@@ -55,16 +80,18 @@ module encoder_reading(
             end 
           end
       
-      CS: 
+      CS: begin 
           cs          = 1'b0;
           next_state  = DATA_IN;
+      end 
       
-      DATA_IN:
+      DATA_IN: begin 
           cs         = 1'b0;
           data_valid = 1'b0;
           if (counter >= 24) begin
               next_state    = IDLE;
             end
+          end 
     endcase 
   end 
       
@@ -74,18 +101,18 @@ module encoder_reading(
       encoder_val_full   <= 'x;
     end else begin 
       state             <= next_state; 
-      case (state):
+      case (state)
         IDLE: 
             counter     <= '0;
         DATA_IN: begin 
           din           <= {din[22:0],miso}; //shift register 
           data_counter  <= data_counter +1'b1;
           end
-        end 
+       
       endcase
      end 
   end 
   
    assign encoder_val = encoder_val_full[21:3]; //19-bit of data     
   
-end module; 
+endmodule; 
