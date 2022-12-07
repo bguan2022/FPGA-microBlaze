@@ -10,9 +10,10 @@
 // tie cs to a push button on vcu 118
 
 module encoder_reading(
-  sck,
+  clk,
   rst_n,
   enable,
+  sclk,
   cs,
   miso,
   encoder_val,
@@ -20,20 +21,29 @@ module encoder_reading(
   data_valid
 );
 
-input logic enable,
-input logic sck;
-input logic miso;
-input logic rst_n;
-output logic cs;
-
-  
+  input logic enable,
+  input logic clk;
+  input logic miso;
+  input logic rst_n;
+  output logic sclk, cs;
 
   enum {IDLE, CS, DATA_IN} state, next_state; 
   
   output logic [23:0] encoder_val_full;
   output logic [18:0] encoder_val;
   output logic        data_valid;
-  logic [4:0]  counter; 
+  logic        [9:0]  clk_counter;
+  logic        [4:0]  data_counter; 
+  
+  assign sclk = clk_counter[9] ;
+    
+  always @(posedge clk or negedge rst_n) begin 
+    if (!rst_n)
+        clk_counter <= '0;
+    end else begin 
+        clk_counter <= clk_counter + 1'b1;
+    end 
+  end 
   
   always_comb begin 
     case(state)    
@@ -68,8 +78,8 @@ output logic cs;
         IDLE: 
             counter     <= '0;
         DATA_IN: begin 
-          din         <= {din[22:0],miso}; //shift register 
-          counter     <= counter +1'b1;
+          din           <= {din[22:0],miso}; //shift register 
+          data_counter  <= data_counter +1'b1;
           end
         end 
       endcase
