@@ -1,0 +1,5 @@
+ps auxf | grep vivado             # get the pid
+
+lsof -p 20443 -p 20459 -p 20505   # check which lib are loaded into viavdo by providing the pid 
+
+export LD_PRELOAD=/lib64/...      # load lib file that are missing from vivado package 
