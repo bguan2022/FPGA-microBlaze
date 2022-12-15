@@ -1,6 +1,7 @@
 #### * Create Clock 
 create_clock -name clk_ddr -period 6 [get_ports DDR_CLK_IN]
 
+set_clock_uncertainty
 
 #### * Pin assignment
 set_property -dict {PACKAGE_PIN AY9 IOSTANDARD LVCMOS18} [get_ports vcu_pin]
@@ -16,3 +17,13 @@ set_input_delay -clock clk_ddr -max 2.1 [get_ports DDR_IN]
 set_input_delay -clock clk_ddr -min 0.9 [get_ports DDR_IN]
 
 Note: Normally in ASIC design, create virtual clock to constraint the I/O
+
+
+#### If data is not required in 1 clock cycle 
+set_multicycle_path
+
+#### If need to set select bit of clock mux 
+set_case_analysis
+
+
+#### 
