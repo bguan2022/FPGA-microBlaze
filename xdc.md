@@ -34,7 +34,7 @@ set_multicycle_path
 set_case_analysis
 
 
-### ASIC Only
+## ASIC Only
 
 The following SDC commands are not supported.
 
