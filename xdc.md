@@ -5,11 +5,15 @@ set_clock_uncertainty
 
 set_propagated_clock
 
+set_clock_latency
+
 set_clock_group -async [group1] to [group2]
 
-#### * Pin assignment
+#### * I/O Pin assignment
 set_property -dict {PACKAGE_PIN AY9 IOSTANDARD LVCMOS18} [get_ports vcu_pin]
 
+IOSTANDARD: 
+    LVCMOS18, LVCMOS12
 #### * If flops are async to each other 
 set_false_path -from [get_pins pin_d1] -to [get_pins pin_d2]
 
