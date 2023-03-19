@@ -72,3 +72,14 @@ https://xilinx.github.io/embeddedsw.github.io/spi/doc/html/api/index.html
 IIC: 
 https://xilinx.github.io/embeddedsw.github.io/iic/doc/html/api/index.html
 
+#Simulation 
+https://docs.xilinx.com/v/u/en-US/xapp1180
+https://medium.com/@sapphire.sharma1996/behavioral-rtl-simulation-with-microblaze-131671e86f04
+
+1.  By saving and building the SDK project, it creates a .elf file which we will be using for our simulation.
+2.  Add your generated .elf file from your SDK project into Vivado
+3.  Associate your .elf file by right-clicking on your .elf file under Simulation sources hierarchy
+4.  Make sure Properties of your .elf file associate with the ublaze
+5.  Run RTL sim
+
+
