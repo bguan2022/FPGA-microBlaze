@@ -73,7 +73,9 @@ IIC:
 https://xilinx.github.io/embeddedsw.github.io/iic/doc/html/api/index.html
 
 #Simulation 
+
 https://docs.xilinx.com/v/u/en-US/xapp1180
+
 https://medium.com/@sapphire.sharma1996/behavioral-rtl-simulation-with-microblaze-131671e86f04
 
 1.  By saving and building the SDK project, it creates a .elf file which we will be using for our simulation.
