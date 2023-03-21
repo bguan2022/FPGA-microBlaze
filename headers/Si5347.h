@@ -1,0 +1,95 @@
+/*
+ * Si5347.h
+ *
+ *  Created on: Aug 22, 2017
+ *      Author: David Edkins
+ */
+
+#include <stdbool.h>
+#include "../HsClockControl.h"
+
+#ifndef SI5347_H_
+#define SI5347_H_
+
+//-- I2C Slave addresses ------------------------------------------------------------------------------------------------------------
+#define SI5347_SLAVE_ADDR			( 0x6C )
+#define SI5347_NUM_REGS				( 741 )
+#define SI5347_NUM_PREAMBLE_REGS	3
+#define SI5347_NUM_POSTAMBLE_REGS	5
+
+//-- REG DEFINES AND MASKS ----------------------------------------------------------------------------------------------------------
+//-- PAGE 0 -------------------------------------------------------------------------------------------------------------------------
+#define SI5347_DIE_REV_REG			0x000
+#define SI5347_DIR_REV_MSK			0x0F
+
+#define SI5347_PAGE_SEL_REG			0x001
+#define SI5347_PAGE_SEL_MSK			0x0F
+
+#define SI5347_PN_0_BASE_REG		0x002
+
+#define Si5347_PN_1_BASE_REG		0x003
+
+#define SI5347_GRADE_REG			0x004
+#define SI5347_GRADE_MSK			0xFF
+
+#define SI5347_DEVICE_REV_REG		0x005
+#define SI5347_DEVICE_REV_MSK		0xFF
+
+#define SI5347_I2C_ADDR_REG			0x00B
+#define SI5347_I2C_ADDR_MSK			0x7F
+
+#define SI5347_STATUS_REG			0x00C
+#define SI5347_STATUS_ERR_MSK		(0x2F)		//mask for all relavent error bits
+#define SI5347_STATUS_SYSINCAL_MSK	(1<<0)		//1 if the device is calibrating
+#define SI5347_STATUS_LOSXAXB_MSK	(1<<1)		//1 if there is no signal at the xaxb pins
+//#define STATUS_LOSREF_MSK			(1<<2)		//1 if there is no signal detect on the xaxb signal
+#define SI5347_STATUS_XAXB_ERR_MSK	(1<<3)		//1 if there is a problem locking to xaxb input signal
+#define SI5347_STATUS_SMBUS_TIMEOUT_MSK		(1<<5)		//1 if there is an SMBus timeout error
+
+#define SI5347_LOS_REG				0x00D
+#define SI5347_LOS_LOS_MSK			(0x0F<<0)	//1 if the clk input [ref 2, 1, 0] is currently LOS
+#define SI5347_LOS_OOF_MSK			(0x0F<<4)	//1 if clk input is currently OOF
+
+#define SI5347_LOL_REG				0x00E
+#define SI5347_LOL_PLL_MSK			(0x05<<0)	//only using A,C. 1 if the dspll is out of lock
+#define SI5347_LOL_HOLD_PLL_MSK		(0x05<<4)	//only using A,C. 1 if the dspll is in holdover or free run
+
+#define SI5347_INCAL_STATUS_REG		0x00F
+#define SI5347_INCAL_STATUS_MSK		(0x0F<<4)	//1 if the dspll internal calibration is busy [D:A]
+
+#define SI5347_SOFT_RST_ALL_REG		0x01C
+#define SI5347_SOFT_RST_ALL_MSK		(1<<0)		//init and calibrate the entire device.
+
+#define SI5347_SOFT_RST_PLLA_REG	0x01C
+#define SI5347_SOFT_RST_PLLA_MSK	(1<<1)		//1 to init and calibrate dspllA
+
+#define SI5347_SOFT_RST_PLLB_REG	0x01C
+#define SI5347_SOFT_RST_PLLB_MSK	(1<<2)		//1 to init and calibrate dspllB
+
+#define SI5347_SOFT_RST_PLLC_REG	0x01C
+#define SI5347_SOFT_RST_PLLC_MSK	(1<<3)		//1 to init and calibrate dspllC
+
+#define SI5347_SOFT_RST_PLLD_REG	0x01C
+#define SI5347_SOFT_RST_PLLD_MSK	(1<<4)		//1 to init and calibrate dspllD
+
+#define SI5347_SOFT_CAL_REG			0x01C
+#define SI5347_SOFT_CAL_MSK			(1<<5)
+
+#define SI5347_FINC_FDEC_REG		0x01D
+#define SI5347_FINC_MSK				(1<<0)		//rising edge will cause an freq increment
+#define SI5347_FDEC_MSK				(1<<1)		//rising edge will cause an freq decrement
+
+#define SI5347_PDN_RESET_REG		0x01E
+#define SI5347_PDN_RESET_PDN_MSK	(1<<0)		//put device into low power mode
+#define SI5347_PDN_RESET_RST_MSK	(1<<1)		//causes hard reset. same as power up. does not self clear.
+#define SI5347_PDN_RESET_SYNC_MSK	(1<<2)		//resets all output R dividers to the same state
+
+#define DEVICE_READY_REG			0xFE
+#define SI5347_DEVICE_READY_MSK		0x0F
+
+//------------------------------------------------------------------
+void Si5347Init();
+bool Si5347Configure(unsigned int numRegs, struct ClockCacheStruct *ClockCache, struct Si5347RegStruct *Si5347RegsCache);
+bool Si5347LockStatus();
+
+#endif /* SI5347_H_ */
